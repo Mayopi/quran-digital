@@ -19,7 +19,7 @@ const fetcher = (url) => fetch(url).then((r) => r.json());
 const SurahCard = ({ name, revelation, ayahs, translation, color, className, number }) => {
   return (
     <Link href={`/surah/${name}`} className="lg:w-[32.5%] w-full">
-      <div className={`w-full rounded-lg shadow-xl p-3 dark:bg-white dark:text-slate-900 bg-slate-800 ${className} ${color} group flex`}>
+      <div className={`w-full rounded-lg shadow-xl p-3  ${className} ${color} group flex`}>
         <header className="flex items-center justify-center w-[20%]">
           <h1 className={`${ysabeau.className} text-4xl text-mute`}>{number}</h1>
         </header>
@@ -78,7 +78,7 @@ export default function Home() {
 
               <h1 className="text-lg font-semibold py-6">Al-Fatihah - 7</h1>
 
-              <Button color={clsx("bg-primary")} className="btn btn-secondary mt-2">
+              <Button color={clsx("bg-primary")} className="btn mt-2">
                 Forward to Last Read
               </Button>
             </div>

@@ -7,39 +7,8 @@ import { BsGithub } from "react-icons/bs";
 import clsx from "clsx";
 
 const Navbar = () => {
-  const themes = [
-    "light",
-    "dark",
-    "cupcake",
-    "bumblebee",
-    "emerald",
-    "corporate",
-    "synthwave",
-    "retro",
-    "cyberpunk",
-    "valentine",
-    "halloween",
-    "garden",
-    "forest",
-    "aqua",
-    "lofi",
-    "pastel",
-    "fantasy",
-    "wireframe",
-    "black",
-    "luxury",
-    "dracula",
-    "cmyk",
-    "autumn",
-    "business",
-    "acid",
-    "lemonade",
-    "night",
-    "coffee",
-    "winter",
-  ];
   return (
-    <div className="navbar bg-primary text-white">
+    <div className="navbar bg-primary dark:text-white">
       <div className="flex-1">
         <Link href={"/"} className="btn btn-ghost normal-case text-xl">
           <FaQuran className="inline" />
