@@ -39,7 +39,7 @@ const Navbar = () => {
     "winter",
   ];
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar bg-primary text-white">
       <div className="flex-1">
         <Link href={"/"} className="btn btn-ghost normal-case text-xl">
           <FaQuran className="inline" />
