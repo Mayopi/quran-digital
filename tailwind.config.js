@@ -8,6 +8,42 @@ module.exports = {
         "gradient-conic": "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
 
+      colors: {
+        primary: {
+          100: "#EDE9F8",
+          200: "#DDD3F1",
+          300: "#CBBDEA",
+          400: "#A987DD",
+          500: "#8E5DD0",
+          600: "#7C4DB8",
+          700: "#6A3C9F",
+          800: "#582C87",
+          900: "#461C6E",
+        },
+        secondary: {
+          100: "#E4F6F8",
+          200: "#C9EDF1",
+          300: "#ADE4EA",
+          400: "#84D3DD",
+          500: "#5BC3D0",
+          600: "#52AEB8",
+          700: "#46999F",
+          800: "#3B8487",
+          900: "#2F6F6E",
+        },
+        accent: {
+          100: "#F7EBE9",
+          200: "#EFD6D3",
+          300: "#E7C0BD",
+          400: "#D4988F",
+          500: "#CB6F61",
+          600: "#B86157",
+          700: "#9D514B",
+          800: "#84413F",
+          900: "#6A3133",
+        },
+      },
+
       container: {
         padding: "3.5rem",
       },

@@ -1,7 +1,9 @@
-import React from "react";
+import clsx from "clsx";
 
-const Button = ({ className, children }) => {
-  return <button className={`btn ${className}`}>{children}</button>;
-};
-
-export default Button;
+export default function Button({ children, className, color = clsx("bg-primary-500"), outline = false, ...options }) {
+  return (
+    <button {...options} className={`${className} btn ${color} text-white rounded-[5px] font-normal normal-case ${outline ? "btn-outline" : "border-none"}`}>
+      {children}
+    </button>
+  );
+}
