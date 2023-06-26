@@ -90,7 +90,7 @@ export default function Home() {
         {isLoading ? (
           <span className={`loading loading-ring loading-lg ${clsx("bg-primary")}`}></span>
         ) : surah_error ? (
-          <div>Somethiing went wrong.</div>
+          <div className="text-error">Something went wrong.</div>
         ) : surah.length == 0 ? (
           <div className="text-error">Tidak ada pencarian yang cocok!</div>
         ) : (
