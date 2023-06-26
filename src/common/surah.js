@@ -13,7 +13,8 @@ const surahById = (id) => {
 };
 
 const surahByName = (name) => {
-  return data.filter((surah) => surah.name == name);
+  const result = data.filter((surah) => surah.name == name);
+  return result.length > 0 ? result[0] : null;
 };
 
 export { surahById, allSurah, surahByName };
