@@ -8,9 +8,10 @@ import useSWR from "swr";
 import Link from "next/link";
 import { useState } from "react";
 import search from "@/common/search";
+import Footer from "@/components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
-const ysabeau = Ysabeau({ subsets: ["latin"] });
+const ysabeau = Ysabeau({ subsets: ["cyrillic-ext"] });
 const raleway = Raleway({ subsets: ["latin"] });
 
 const fetcher = (url) => fetch(url).then((r) => r.json());
@@ -24,7 +25,7 @@ const SurahCard = ({ name, revelation, ayahs, translation, color, className, num
         </header>
         <div className="flex justify-between w-full">
           <div className="col w-1/2">
-            <h2 className="card-title text-primary hover:link">{name}</h2>
+            <h2 className={`card-title text-2xl text-primary hover:link ${ysabeau.className}`}>{name}</h2>
             <p className="text-mute group-hover:text-opacity-100 group-hover:text-inherit transition text-xs">{translation}</p>
           </div>
           <div className="col w-1/2 relative">
@@ -54,7 +55,7 @@ export default function Home() {
       <Navbar />
 
       <header className="flex flex-col gap-2 justify-center items-center mt-10">
-        <h1 className="lg:text-4xl text-2xl">
+        <h1 className={`lg:text-4xl text-2xl ${ysabeau.className}`}>
           Welcome to Quran Digital <BsFillMoonStarsFill className={"inline text-primary"} />
         </h1>
         <p className="lg:text-lg text-mute">Learn Quran and Recite once everyday</p>
@@ -90,10 +91,14 @@ export default function Home() {
           <span className={`loading loading-ring loading-lg ${clsx("bg-primary")}`}></span>
         ) : surah_error ? (
           <div>Somethiing went wrong.</div>
+        ) : surah.length == 0 ? (
+          <div className="text-error">Tidak ada pencarian yang cocok!</div>
         ) : (
           surah.map((data) => <SurahCard key={data.number} name={data.name} revelation={data.revelation} translation={data.translation} ayahs={data.numberOfAyahs} number={data.number} />)
         )}
       </section>
+
+      <Footer />
     </main>
   );
 }

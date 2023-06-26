@@ -43,10 +43,6 @@ module.exports = {
       //     900: "#6A3133",
       //   },
       // },
-
-      container: {
-        padding: "3.5rem",
-      },
     },
   },
   plugins: [require("daisyui")],

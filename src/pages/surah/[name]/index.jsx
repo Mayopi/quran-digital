@@ -5,8 +5,9 @@ import { Raleway, Ysabeau, Noto_Naskh_Arabic } from "next/font/google";
 import { useRouter } from "next/router";
 import useSWR from "swr";
 import Button from "@/components/Button";
-import { BsFillPlayFill } from "react-icons/bs";
+import { BsFillPlayFill, BsPauseFill } from "react-icons/bs";
 import clsx from "clsx";
+import Footer from "@/components/Footer";
 
 const raleway = Raleway({ subsets: ["latin"] });
 const ysabeau = Ysabeau({ subsets: ["cyrillic-ext"] });
@@ -66,7 +67,7 @@ const Surah = () => {
         </div>
       </header>
 
-      <section className="container flex flex-col gap-5 my-10">
+      <section className="mx-5 flex flex-col gap-5 my-10">
         {isLoading ? (
           <div className="w-full flex justify-center">
             <span className="loading loading-bars loading-lg"></span>
@@ -75,9 +76,10 @@ const Surah = () => {
           surah?.ayahs?.map((item) => (
             <div key={item.number.inSurah}>
               <h1 className={`text-4xl text-right ${NotoNaskhArabic.className}`}>{item.arab}</h1>
-              <div className="flex justify-end mt-2">
+              <div className="audio flex justify-end mt-5">
                 <Button onClick={() => toggleAudio(item.number.inSurah + " Audio")} color={isPlaying && currentAudioId === item.number.inSurah + " Audio" ? clsx("bg-primary") : clsx("bg-accent")} className={"hover:bg-slate-900"}>
-                  {isPlaying && currentAudioId === item.number.inSurah + " Audio" ? "Pause Audio" : "Play Audio"} <BsFillPlayFill className="text-xl" />
+                  {isPlaying && currentAudioId === item.number.inSurah + " Audio" ? "Pause Audio" : "Play Audio"}{" "}
+                  {isPlaying && currentAudioId === item.number.inSurah + " Audio" ? <BsPauseFill className="text-xl" /> : <BsFillPlayFill className="text-xl" />}
                 </Button>
                 <audio
                   id={item.number.inSurah + " Audio"}
@@ -98,6 +100,7 @@ const Surah = () => {
           ))
         )}
       </section>
+      <Footer />
     </main>
   );
 };
