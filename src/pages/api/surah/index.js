@@ -1,5 +1,12 @@
 import { surahById, allSurah } from "@/common/surah";
 
+export const config = {
+  api: {
+    responseLimit: false,
+    // responseLimit: '8mb',
+  },
+};
+
 export default async function handler(req, res) {
   try {
     const data = allSurah();

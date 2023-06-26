@@ -1,4 +1,4 @@
-import { Inter, Noto_Naskh_Arabic, Amiri, Lateef, Ysabeau, Raleway } from "next/font/google";
+import { Inter, Ysabeau, Raleway } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Button from "@/components/Button";
 import { BsFillMoonStarsFill, BsBookFill, BsSearch } from "react-icons/bs";
@@ -6,7 +6,7 @@ import clsx from "clsx";
 import Head from "next/head";
 import useSWR from "swr";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import search from "@/common/search";
 import Footer from "@/components/Footer";
 
@@ -43,10 +43,7 @@ export default function Home() {
   const [searchValue, setSearchValue] = useState(null);
   let { data: { data: surah } = {}, error: surah_error, isLoading } = useSWR("/api/surah", fetcher);
 
-  if (searchValue) {
-    surah = search(surah, ["name", "translation", "revelation"], searchValue);
-  }
-
+  if (searchValue) surah = search(surah, ["name", "translation", "revelation"], searchValue);
   return (
     <main className={raleway.className}>
       <Head>
@@ -90,7 +87,10 @@ export default function Home() {
         {isLoading ? (
           <span className={`loading loading-ring loading-lg ${clsx("bg-primary")}`}></span>
         ) : surah_error ? (
-          <div className="text-error">Something went wrong.</div>
+          <div className="text-error">
+            <p>Something went wrong</p>
+            <p>{surah_error.message}</p>
+          </div>
         ) : surah.length == 0 ? (
           <div className="text-error">Tidak ada pencarian yang cocok!</div>
         ) : (

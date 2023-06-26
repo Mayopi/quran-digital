@@ -59,7 +59,7 @@ const ThemeChangePage = () => {
       setCurrentTheme(savedTheme);
       applyTheme(savedTheme);
     }
-  }, []);
+  }, [themes]);
 
   return (
     <main className={raleway.className}>
