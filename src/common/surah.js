@@ -9,11 +9,11 @@ const allSurah = () => {
 };
 
 const surahById = (id) => {
-  return data.filter((surah) => surah.number === id);
+  return data.filter((surah) => surah.number == id);
 };
 
 const surahByName = (name) => {
-  return data.filter((surah) => surah.name === name);
+  return data.filter((surah) => surah.name == name);
 };
 
 export { surahById, allSurah, surahByName };
