@@ -16,7 +16,7 @@ const Navbar = () => {
         </Link>
       </div>
       <div className="flex-none gap-2">
-        <Link href={"https://github.com/Mayopi/quran-digital"}>
+        <Link href={"https://github.com/Mayopi/quran-digital"} target="__blank">
           <Button color={clsx("bg-primary")} className={"lg:btn-md btn-sm hover:bg-slate-900"}>
             Github <BsGithub className="inline" />
           </Button>
