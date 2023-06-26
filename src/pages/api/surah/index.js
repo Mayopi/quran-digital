@@ -1,18 +1,13 @@
 import { surahById, allSurah } from "@/common/surah";
-
-export const config = {
-  api: {
-    responseLimit: false,
-    // responseLimit: '8mb',
-  },
-};
+import pako from "pako";
 
 export default async function handler(req, res) {
   try {
     const data = allSurah();
 
+    const compressed = pako.deflate(JSON.stringify(data));
     res.status(200).json({
-      data,
+      data: compressed,
     });
   } catch (error) {
     console.log(error);

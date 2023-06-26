@@ -1,4 +1,4 @@
-import { Inter, Ysabeau, Raleway } from "next/font/google";
+import { Ysabeau, Raleway } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Button from "@/components/Button";
 import { BsFillMoonStarsFill, BsBookFill, BsSearch } from "react-icons/bs";
@@ -9,8 +9,8 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import search from "@/common/search";
 import Footer from "@/components/Footer";
+import pako from "pako";
 
-const inter = Inter({ subsets: ["latin"] });
 const ysabeau = Ysabeau({ subsets: ["cyrillic-ext"] });
 const raleway = Raleway({ subsets: ["latin"] });
 
@@ -39,11 +39,30 @@ const SurahCard = ({ name, revelation, ayahs, translation, color, className, num
   );
 };
 
-export default function Home() {
-  const [searchValue, setSearchValue] = useState(null);
-  let { data: { data: surah } = {}, error: surah_error, isLoading } = useSWR("/api/surah", fetcher);
+const inflateData = (data) => {
+  const inflatedSurah = pako.inflate(data, { to: "string" });
+  const parsedSurah = JSON.parse(inflatedSurah);
+  return parsedSurah;
+};
 
-  if (searchValue) surah = search(surah, ["name", "translation", "revelation"], searchValue);
+export default function Home() {
+  const { data: surahData = null, error: surah_error, isLoading } = useSWR("/api/surah", fetcher);
+  const [surah, setSurah] = useState([]);
+  const [searchValue, setSearchValue] = useState(null);
+
+  useEffect(() => {
+    if (surahData && !surah_error) {
+      const parsedSurah = inflateData(surahData.data);
+      let updatedSurah = parsedSurah;
+
+      if (searchValue) {
+        updatedSurah = search(parsedSurah, ["name", "translation", "revelation"], searchValue);
+      }
+
+      setSurah(updatedSurah);
+    }
+  }, [surahData, surah_error, searchValue]);
+
   return (
     <main className={raleway.className}>
       <Head>
