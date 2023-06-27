@@ -43,7 +43,6 @@ export default function Home() {
 
   const [searchValue, setSearchValue] = useState(null);
 
-
   if (searchValue) surah = search(surah, ["name", "translation", "revelation"], searchValue);
   return (
     <main className={raleway.className}>
@@ -92,10 +91,10 @@ export default function Home() {
             <p>Something went wrong</p>
             <p>{surah_error.message}</p>
           </div>
-        ) : surah.length == 0 ? (
+        ) : surah?.length == 0 ? (
           <div className="text-error">Tidak ada pencarian yang cocok!</div>
         ) : (
-          surah.map((data) => <SurahCard key={data.number} name={data.name} revelation={data.revelation} translation={data.translation} ayahs={data.numberOfAyahs} number={data.number} />)
+          surah?.map((data) => <SurahCard key={data.number} name={data.name} revelation={data.revelation} translation={data.translation} ayahs={data.numberOfAyahs} number={data.number} />)
         )}
       </section>
 
