@@ -41,17 +41,21 @@ const SurahCard = ({ name, revelation, ayahs, translation, color, className, num
 export default function Home() {
   const [surah, setSurah] = useState([]);
   const [searchValue, setSearchValue] = useState(null);
+  const [searchNotFound, setSearchNotFound] = useState(false);
 
   let { data: { data } = {}, error: surah_error, isLoading } = useSWR(`${process.env.NEXT_PUBLIC_QURAN_API}/surat`, fetcher);
 
   useEffect(() => {
-    setSurah(data);
     if (searchValue) {
-      setSurah(search(surah, ["namaLatin", "arti", "tempatTurun"], searchValue));
-    } else if (!searchValue) {
+      const result = search(data, ["namaLatin", "arti", "tempatTurun"], searchValue);
+
+      setSurah(result);
+      setSearchNotFound(result.length === 0);
+    } else {
       setSurah(data);
+      setSearchNotFound(false);
     }
-  }, [data, searchValue, surah]);
+  }, [data, searchValue]);
 
   return (
     <main className={raleway.className}>
@@ -84,7 +88,7 @@ export default function Home() {
             <p>Something went wrong</p>
             <p>{surah_error.message}</p>
           </div>
-        ) : surah.length == 0 ? (
+        ) : searchNotFound ? (
           <div className="text-error">Tidak ada pencarian yang cocok!</div>
         ) : (
           surah.map((data) => <SurahCard key={data.nomor} name={data.namaLatin} revelation={data.tempatTurun} translation={data.arti} ayahs={data.jumlahAyat} number={data.nomor} arabName={data.nama} />)
