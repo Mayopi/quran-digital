@@ -1,458 +1,458 @@
 [
   {
-    "name": "Al-Fatihah",
-    "number": 1
+    "number": 1,
+    "name": "Al-Fatihah"
   },
   {
-    "name": "Al-Baqarah",
-    "number": 2
+    "number": 2,
+    "name": "Al-Baqarah"
   },
   {
-    "name": "Ali 'Imran",
-    "number": 3
+    "number": 3,
+    "name": "Ali 'Imran"
   },
   {
-    "name": "An-Nisa'",
-    "number": 4
+    "number": 4,
+    "name": "An-Nisa'"
   },
   {
-    "name": "Al-Ma'idah",
-    "number": 5
+    "number": 5,
+    "name": "Al-Ma'idah"
   },
   {
-    "name": "Al-An'am",
-    "number": 6
+    "number": 6,
+    "name": "Al-An'am"
   },
   {
-    "name": "Al-A'raf",
-    "number": 7
+    "number": 7,
+    "name": "Al-A'raf"
   },
   {
-    "name": "Al-Anfal",
-    "number": 8
+    "number": 8,
+    "name": "Al-Anfal"
   },
   {
-    "name": "At-Taubah",
-    "number": 9
+    "number": 9,
+    "name": "At-Taubah"
   },
   {
-    "name": "Yunus",
-    "number": 10
+    "number": 10,
+    "name": "Yunus"
   },
   {
-    "name": "Hud",
-    "number": 11
+    "number": 11,
+    "name": "Hud"
   },
   {
-    "name": "Yusuf",
-    "number": 12
+    "number": 12,
+    "name": "Yusuf"
   },
   {
-    "name": "Ar-Ra'd",
-    "number": 13
+    "number": 13,
+    "name": "Ar-Ra'd"
   },
   {
-    "name": "Ibrahim",
-    "number": 14
+    "number": 14,
+    "name": "Ibrahim"
   },
   {
-    "name": "Al-Hijr",
-    "number": 15
+    "number": 15,
+    "name": "Al-Hijr"
   },
   {
-    "name": "An-Nahl",
-    "number": 16
+    "number": 16,
+    "name": "An-Nahl"
   },
   {
-    "name": "Al-Isra'",
-    "number": 17
+    "number": 17,
+    "name": "Al-Isra'"
   },
   {
-    "name": "Al-Kahf",
-    "number": 18
+    "number": 18,
+    "name": "Al-Kahf"
   },
   {
-    "name": "Maryam",
-    "number": 19
+    "number": 19,
+    "name": "Maryam"
   },
   {
-    "name": "Taha",
-    "number": 20
+    "number": 20,
+    "name": "Taha"
   },
   {
-    "name": "Al-Anbiya'",
-    "number": 21
+    "number": 21,
+    "name": "Al-Anbiya'"
   },
   {
-    "name": "Al-Hajj",
-    "number": 22
+    "number": 22,
+    "name": "Al-Hajj"
   },
   {
-    "name": "Al-Mu'minun",
-    "number": 23
+    "number": 23,
+    "name": "Al-Mu'minun"
   },
   {
-    "name": "An-Nur",
-    "number": 24
+    "number": 24,
+    "name": "An-Nur"
   },
   {
-    "name": "Al-Furqan",
-    "number": 25
+    "number": 25,
+    "name": "Al-Furqan"
   },
   {
-    "name": "Asy-Syu'ara'",
-    "number": 26
+    "number": 26,
+    "name": "Asy-Syu'ara'"
   },
   {
-    "name": "An-Naml",
-    "number": 27
+    "number": 27,
+    "name": "An-Naml"
   },
   {
-    "name": "Al-Qasas",
-    "number": 28
+    "number": 28,
+    "name": "Al-Qasas"
   },
   {
-    "name": "Al-'Ankabut",
-    "number": 29
+    "number": 29,
+    "name": "Al-'Ankabut"
   },
   {
-    "name": "Ar-Rum",
-    "number": 30
+    "number": 30,
+    "name": "Ar-Rum"
   },
   {
-    "name": "Luqman",
-    "number": 31
+    "number": 31,
+    "name": "Luqman"
   },
   {
-    "name": "As-Sajdah",
-    "number": 32
+    "number": 32,
+    "name": "As-Sajdah"
   },
   {
-    "name": "Al-Ahzab",
-    "number": 33
+    "number": 33,
+    "name": "Al-Ahzab"
   },
   {
-    "name": "Saba'",
-    "number": 34
+    "number": 34,
+    "name": "Saba'"
   },
   {
-    "name": "Fatir",
-    "number": 35
+    "number": 35,
+    "name": "Fatir"
   },
   {
-    "name": "Ya-Sin",
-    "number": 36
+    "number": 36,
+    "name": "Yasin"
   },
   {
-    "name": "As-Saffat",
-    "number": 37
+    "number": 37,
+    "name": "As-Saffat"
   },
   {
-    "name": "Sad",
-    "number": 38
+    "number": 38,
+    "name": "Sad"
   },
   {
-    "name": "Az-Zumar",
-    "number": 39
+    "number": 39,
+    "name": "Az-Zumar"
   },
   {
-    "name": "Ghafir",
-    "number": 40
+    "number": 40,
+    "name": "Gafir"
   },
   {
-    "name": "Fussilat",
-    "number": 41
+    "number": 41,
+    "name": "Fussilat"
   },
   {
-    "name": "Ash-Shura",
-    "number": 42
+    "number": 42,
+    "name": "Asy-Syura"
   },
   {
-    "name": "Az-Zukhruf",
-    "number": 43
+    "number": 43,
+    "name": "Az-Zukhruf"
   },
   {
-    "name": "Ad-Dukhan",
-    "number": 44
+    "number": 44,
+    "name": "Ad-Dukhan"
   },
   {
-    "name": "Al-Jathiyah",
-    "number": 45
+    "number": 45,
+    "name": "Al-Jasiyah"
   },
   {
-    "name": "Al-Ahqaf",
-    "number": 46
+    "number": 46,
+    "name": "Al-Ahqaf"
   },
   {
-    "name": "Muhammad",
-    "number": 47
+    "number": 47,
+    "name": "Muhammad"
   },
   {
-    "name": "Al-Fath",
-    "number": 48
+    "number": 48,
+    "name": "Al-Fath"
   },
   {
-    "name": "Al-Hujurat",
-    "number": 49
+    "number": 49,
+    "name": "Al-Hujurat"
   },
   {
-    "name": "Qaf",
-    "number": 50
+    "number": 50,
+    "name": "Qaf"
   },
   {
-    "name": "Az-Zariyat",
-    "number": 51
+    "number": 51,
+    "name": "Az-Zariyat"
   },
   {
-    "name": "At-Tur",
-    "number": 52
+    "number": 52,
+    "name": "At-Tur"
   },
   {
-    "name": "An-Najm",
-    "number": 53
+    "number": 53,
+    "name": "An-Najm"
   },
   {
-    "name": "Al-Qamar",
-    "number": 54
+    "number": 54,
+    "name": "Al-Qamar"
   },
   {
-    "name": "Ar-Rahman",
-    "number": 55
+    "number": 55,
+    "name": "Ar-Rahman"
   },
   {
-    "name": "Al-Waqi'ah",
-    "number": 56
+    "number": 56,
+    "name": "Al-Waqi'ah"
   },
   {
-    "name": "Al-Hadid",
-    "number": 57
+    "number": 57,
+    "name": "Al-Hadid"
   },
   {
-    "name": "Al-Mujadilah",
-    "number": 58
+    "number": 58,
+    "name": "Al-Mujadalah"
   },
   {
-    "name": "Al-Hashr",
-    "number": 59
+    "number": 59,
+    "name": "Al-Hasyr"
   },
   {
-    "name": "Al-Mumtahanah",
-    "number": 60
+    "number": 60,
+    "name": "Al-Mumtahanah"
   },
   {
-    "name": "As-Saff",
-    "number": 61
+    "number": 61,
+    "name": "As-Saff"
   },
   {
-    "name": "Al-Jumu'ah",
-    "number": 62
+    "number": 62,
+    "name": "Al-Jumu'ah"
   },
   {
-    "name": "Al-Munafiqun",
-    "number": 63
+    "number": 63,
+    "name": "Al-Munafiqun"
   },
   {
-    "name": "At-Taghabun",
-    "number": 64
+    "number": 64,
+    "name": "At-Tagabun"
   },
   {
-    "name": "At-Talaq",
-    "number": 65
+    "number": 65,
+    "name": "At-Talaq"
   },
   {
-    "name": "At-Tahrim",
-    "number": 66
+    "number": 66,
+    "name": "At-Tahrim"
   },
   {
-    "name": "Al-Mulk",
-    "number": 67
+    "number": 67,
+    "name": "Al-Mulk"
   },
   {
-    "name": "Al-Qalam",
-    "number": 68
+    "number": 68,
+    "name": "Al-Qalam"
   },
   {
-    "name": "Al-Haqqah",
-    "number": 69
+    "number": 69,
+    "name": "Al-Haqqah"
   },
   {
-    "name": "Al-Ma'arij",
-    "number": 70
+    "number": 70,
+    "name": "Al-Ma'arij"
   },
   {
-    "name": "Nuh",
-    "number": 71
+    "number": 71,
+    "name": "Nuh"
   },
   {
-    "name": "Al-Jinn",
-    "number": 72
+    "number": 72,
+    "name": "Al-Jinn"
   },
   {
-    "name": "Al-Muzzammil",
-    "number": 73
+    "number": 73,
+    "name": "Al-Muzzammil"
   },
   {
-    "name": "Al-Muddathir",
-    "number": 74
+    "number": 74,
+    "name": "Al-Muddassir"
   },
   {
-    "name": "Al-Qiyamah",
-    "number": 75
+    "number": 75,
+    "name": "Al-Qiyamah"
   },
   {
-    "name": "Al-Insan",
-    "number": 76
+    "number": 76,
+    "name": "Al-Insan"
   },
   {
-    "name": "Al-Mursalat",
-    "number": 77
+    "number": 77,
+    "name": "Al-Mursalat"
   },
   {
-    "name": "An-Naba'",
-    "number": 78
+    "number": 78,
+    "name": "An-Naba'"
   },
   {
-    "name": "An-Nazi'at",
-    "number": 79
+    "number": 79,
+    "name": "An-Nazi'at"
   },
   {
-    "name": "'Abasa",
-    "number": 80
+    "number": 80,
+    "name": "'Abasa"
   },
   {
-    "name": "At-Takwir",
-    "number": 81
+    "number": 81,
+    "name": "At-Takwir"
   },
   {
-    "name": "Al-Infitar",
-    "number": 82
+    "number": 82,
+    "name": "Al-Infitar"
   },
   {
-    "name": "Al-Mutaffifin",
-    "number": 83
+    "number": 83,
+    "name": "Al-Mutaffifin"
   },
   {
-    "name": "Al-Inshiqaq",
-    "number": 84
+    "number": 84,
+    "name": "Al-Insyiqaq"
   },
   {
-    "name": "Al-Buruj",
-    "number": 85
+    "number": 85,
+    "name": "Al-Buruj"
   },
   {
-    "name": "At-Tariq",
-    "number": 86
+    "number": 86,
+    "name": "At-Tariq"
   },
   {
-    "name": "Al-A'la",
-    "number": 87
+    "number": 87,
+    "name": "Al-A'la"
   },
   {
-    "name": "Al-Ghashiyah",
-    "number": 88
+    "number": 88,
+    "name": "Al-Gasyiyah"
   },
   {
-    "name": "Al-Fajr",
-    "number": 89
+    "number": 89,
+    "name": "Al-Fajr"
   },
   {
-    "name": "Al-Balad",
-    "number": 90
+    "number": 90,
+    "name": "Al-Balad"
   },
   {
-    "name": "Ash-Shams",
-    "number": 91
+    "number": 91,
+    "name": "Asy-Syams"
   },
   {
-    "name": "Al-Lail",
-    "number": 92
+    "number": 92,
+    "name": "Al-Lail"
   },
   {
-    "name": "Ad-Duha",
-    "number": 93
+    "number": 93,
+    "name": "Ad-Duha"
   },
   {
-    "name": "Ash-Sharh",
-    "number": 94
+    "number": 94,
+    "name": "Asy-Syarh"
   },
   {
-    "name": "At-Tin",
-    "number": 95
+    "number": 95,
+    "name": "At-Tin"
   },
   {
-    "name": "Al-'Alaq",
-    "number": 96
+    "number": 96,
+    "name": "Al-'Alaq"
   },
   {
-    "name": "Al-Qadr",
-    "number": 97
+    "number": 97,
+    "name": "Al-Qadr"
   },
   {
-    "name": "Al-Bayyinah",
-    "number": 98
+    "number": 98,
+    "name": "Al-Bayyinah"
   },
   {
-    "name": "Az-Zalzalah",
-    "number": 99
+    "number": 99,
+    "name": "Az-Zalzalah"
   },
   {
-    "name": "Al-'Adiyat",
-    "number": 100
+    "number": 100,
+    "name": "Al-'Adiyat"
   },
   {
-    "name": "Al-Qari'ah",
-    "number": 101
+    "number": 101,
+    "name": "Al-Qari'ah"
   },
   {
-    "name": "At-Takathur",
-    "number": 102
+    "number": 102,
+    "name": "At-Takasur"
   },
   {
-    "name": "Al-'Asr",
-    "number": 103
+    "number": 103,
+    "name": "Al-'Asr"
   },
   {
-    "name": "Al-Humazah",
-    "number": 104
+    "number": 104,
+    "name": "Al-Humazah"
   },
   {
-    "name": "Al-Fil",
-    "number": 105
+    "number": 105,
+    "name": "Al-Fil"
   },
   {
-    "name": "Quraysh",
-    "number": 106
+    "number": 106,
+    "name": "Quraisy"
   },
   {
-    "name": "Al-Ma'un",
-    "number": 107
+    "number": 107,
+    "name": "Al-Ma'un"
   },
   {
-    "name": "Al-Kawthar",
-    "number": 108
+    "number": 108,
+    "name": "Al-Kausar"
   },
   {
-    "name": "Al-Kafirun",
-    "number": 109
+    "number": 109,
+    "name": "Al-Kafirun"
   },
   {
-    "name": "An-Nasr",
-    "number": 110
+    "number": 110,
+    "name": "An-Nasr"
   },
   {
-    "name": "Al-Masad",
-    "number": 111
+    "number": 111,
+    "name": "Al-Lahab"
   },
   {
-    "name": "Al-Ikhlas",
-    "number": 112
+    "number": 112,
+    "name": "Al-Ikhlas"
   },
   {
-    "name": "Al-Falaq",
-    "number": 113
+    "number": 113,
+    "name": "Al-Falaq"
   },
   {
-    "name": "An-Nas",
-    "number": 114
+    "number": 114,
+    "name": "An-Nas"
   }
 ]
