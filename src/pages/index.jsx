@@ -1,24 +1,23 @@
 import { Ysabeau, Raleway } from "next/font/google";
 import Navbar from "@/components/Navbar";
-import Button from "@/components/Button";
-import { BsFillMoonStarsFill, BsBookFill } from "react-icons/bs";
+import { BsFillMoonStarsFill } from "react-icons/bs";
 import clsx from "clsx";
 import Head from "next/head";
 import useSWR from "swr";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import search from "@/common/search";
 import Footer from "@/components/Footer";
 
 const ysabeau = Ysabeau({ subsets: ["cyrillic-ext"] });
 const raleway = Raleway({ subsets: ["latin"] });
 
-const fetcher = (url) => fetch(url, { cache: "no-store", next: { revalidate: 0 } }).then((r) => r.json());
+const fetcher = (url) => fetch(url).then((r) => r.json());
 
-const SurahCard = ({ name, revelation, ayahs, translation, color, className, number }) => {
+const SurahCard = ({ name, revelation, ayahs, translation, color, className, number, arabName }) => {
   return (
     <Link href={`/surah/${name}`} className="lg:w-[32.5%] w-full">
-      <div className={`w-full rounded-lg shadow-xl p-3  ${className} ${color} group flex`}>
+      <div className={`w-full rounded-lg shadow-xl p-3  ${className} ${color} group flex border border-primary`}>
         <header className="flex items-center justify-center w-[20%]">
           <h1 className={`${ysabeau.className} text-4xl text-mute`}>{number}</h1>
         </header>
@@ -27,8 +26,9 @@ const SurahCard = ({ name, revelation, ayahs, translation, color, className, num
             <h2 className={`card-title text-2xl text-primary hover:link ${ysabeau.className}`}>{name}</h2>
             <p className="text-mute group-hover:text-opacity-100 group-hover:text-inherit transition text-xs">{translation}</p>
           </div>
-          <div className="col w-1/2 relative">
-            <p className="absolute bottom-0 text-right">
+          <div className="col w-1/2 flex flex-col justify-between">
+            <h3 className="text-right text-xl text-mute">{arabName}</h3>
+            <p className="text-right">
               {revelation} - {ayahs} Ayat
             </p>
           </div>
@@ -39,11 +39,20 @@ const SurahCard = ({ name, revelation, ayahs, translation, color, className, num
 };
 
 export default function Home() {
-  let { data: { updatedData: surah } = {}, error: surah_error, isLoading } = useSWR(process.env.NEXT_PUBLIC_QURAN_API, fetcher);
-
+  const [surah, setSurah] = useState([]);
   const [searchValue, setSearchValue] = useState(null);
 
-  if (searchValue) surah = search(surah, ["name", "translation", "revelation"], searchValue);
+  let { data: { data } = {}, error: surah_error, isLoading } = useSWR(`${process.env.NEXT_PUBLIC_QURAN_API}/surat`, fetcher);
+
+  useEffect(() => {
+    setSurah(data);
+    if (searchValue) {
+      setSurah(search(surah, ["namaLatin", "arti", "tempatTurun"], searchValue));
+    } else if (!searchValue) {
+      setSurah(data);
+    }
+  }, [data, searchValue, surah]);
+
   return (
     <main className={raleway.className}>
       <Head>
@@ -78,7 +87,7 @@ export default function Home() {
         ) : surah.length == 0 ? (
           <div className="text-error">Tidak ada pencarian yang cocok!</div>
         ) : (
-          surah.map((data) => <SurahCard key={data.number} name={data.name} revelation={data.revelation} translation={data.translation} ayahs={data.numberOfAyahs} number={data.number} />)
+          surah.map((data) => <SurahCard key={data.nomor} name={data.namaLatin} revelation={data.tempatTurun} translation={data.arti} ayahs={data.jumlahAyat} number={data.nomor} arabName={data.nama} />)
         )}
       </section>
 
