@@ -13,7 +13,7 @@ import Footer from "@/components/Footer";
 const ysabeau = Ysabeau({ subsets: ["cyrillic-ext"] });
 const raleway = Raleway({ subsets: ["latin"] });
 
-const fetcher = (url) => fetch(url).then((r) => r.json());
+const fetcher = (url) => fetch(url, { cache: "no-store", next: { revalidate: 0 } }).then((r) => r.json());
 
 const SurahCard = ({ name, revelation, ayahs, translation, color, className, number }) => {
   return (
@@ -39,9 +39,10 @@ const SurahCard = ({ name, revelation, ayahs, translation, color, className, num
 };
 
 export default function Home() {
-  let { data: { data: surah } = {}, error: surah_error, isLoading } = useSWR(process.env.NEXT_PUBLIC_QURAN_API, fetcher);
+  let { data: { updatedData: surah } = {}, error: surah_error, isLoading } = useSWR(process.env.NEXT_PUBLIC_QURAN_API, fetcher);
 
   const [searchValue, setSearchValue] = useState(null);
+
 
   if (searchValue) surah = search(surah, ["name", "translation", "revelation"], searchValue);
   return (

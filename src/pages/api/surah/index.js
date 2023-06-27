@@ -4,14 +4,18 @@ export default async function handler(req, res) {
   try {
     const data = allSurah();
 
-    data.map((surah) => {
-      delete surah.description;
-      delete surah.bismillah;
-      delete surah.ayahs;
+    const updatedData = [];
+    data.forEach((surah) => {
+      const updatedSurah = { ...surah };
+      delete updatedSurah.description;
+      delete updatedSurah.bismillah;
+      delete updatedSurah.ayahs;
+      delete updatedSurah.audio;
+      updatedData.push(updatedSurah);
     });
 
     res.status(200).json({
-      data,
+      updatedData,
     });
   } catch (error) {
     console.log(error);
