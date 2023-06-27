@@ -6,7 +6,7 @@ import clsx from "clsx";
 import Head from "next/head";
 import useSWR from "swr";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import search from "@/common/search";
 import Footer from "@/components/Footer";
 
@@ -84,17 +84,17 @@ export default function Home() {
       </header>
 
       <section className="mx-5 my-16 flex flex-wrap gap-5 lg:gap-3 items-center justify-center">
-        {isLoading ? (
+        {isLoading || (!surah && !surah_error) ? (
           <span className={`loading loading-ring loading-lg ${clsx("bg-primary")}`}></span>
         ) : surah_error ? (
           <div className="text-error">
             <p>Something went wrong</p>
             <p>{surah_error.message}</p>
           </div>
-        ) : surah?.length == 0 ? (
+        ) : surah.length == 0 ? (
           <div className="text-error">Tidak ada pencarian yang cocok!</div>
         ) : (
-          surah?.map((data) => <SurahCard key={data.number} name={data.name} revelation={data.revelation} translation={data.translation} ayahs={data.numberOfAyahs} number={data.number} />)
+          surah.map((data) => <SurahCard key={data.number} name={data.name} revelation={data.revelation} translation={data.translation} ayahs={data.numberOfAyahs} number={data.number} />)
         )}
       </section>
 
