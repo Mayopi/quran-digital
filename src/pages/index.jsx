@@ -65,22 +65,6 @@ export default function Home() {
             setSearchValue(target.value);
           }}
         />
-
-        <div className="hero mt-10 bg-base-200 rounded-lg">
-          <div className="hero-content text-center">
-            <div className="max-w-md">
-              <h1 className="text-5xl font-bold">
-                <BsBookFill className="inline" /> Last Read
-              </h1>
-
-              <h1 className="text-lg font-semibold py-6">Al-Fatihah - 7</h1>
-
-              <Button color={clsx("bg-primary")} className="btn mt-2">
-                Forward to Last Read
-              </Button>
-            </div>
-          </div>
-        </div>
       </header>
 
       <section className="mx-5 my-16 flex flex-wrap gap-5 lg:gap-3 items-center justify-center">
