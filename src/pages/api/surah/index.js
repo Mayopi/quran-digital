@@ -1,13 +1,17 @@
 import { surahById, allSurah } from "@/common/surah";
-import pako from "pako";
 
 export default async function handler(req, res) {
   try {
     const data = allSurah();
 
-    const compressed = pako.deflate(JSON.stringify(data));
+    data.map((surah) => {
+      delete surah.description;
+      delete surah.bismillah;
+      delete surah.ayahs;
+    });
+
     res.status(200).json({
-      data: compressed,
+      data,
     });
   } catch (error) {
     console.log(error);

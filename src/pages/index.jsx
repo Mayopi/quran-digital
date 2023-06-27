@@ -1,7 +1,7 @@
 import { Ysabeau, Raleway } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Button from "@/components/Button";
-import { BsFillMoonStarsFill, BsBookFill, BsSearch } from "react-icons/bs";
+import { BsFillMoonStarsFill, BsBookFill } from "react-icons/bs";
 import clsx from "clsx";
 import Head from "next/head";
 import useSWR from "swr";
@@ -9,7 +9,6 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import search from "@/common/search";
 import Footer from "@/components/Footer";
-import pako from "pako";
 
 const ysabeau = Ysabeau({ subsets: ["cyrillic-ext"] });
 const raleway = Raleway({ subsets: ["latin"] });
@@ -39,30 +38,12 @@ const SurahCard = ({ name, revelation, ayahs, translation, color, className, num
   );
 };
 
-const inflateData = (data) => {
-  const inflatedSurah = pako.inflate(data, { to: "string" });
-  const parsedSurah = JSON.parse(inflatedSurah);
-  return parsedSurah;
-};
-
 export default function Home() {
-  const { data: surahData = null, error: surah_error, isLoading } = useSWR("/api/surah", fetcher);
-  const [surah, setSurah] = useState([]);
+  let { data: { data: surah } = {}, error: surah_error, isLoading } = useSWR(process.env.NEXT_PUBLIC_QURAN_API, fetcher);
+
   const [searchValue, setSearchValue] = useState(null);
 
-  useEffect(() => {
-    if (surahData && !surah_error) {
-      const parsedSurah = inflateData(surahData.data);
-      let updatedSurah = parsedSurah;
-
-      if (searchValue) {
-        updatedSurah = search(parsedSurah, ["name", "translation", "revelation"], searchValue);
-      }
-
-      setSurah(updatedSurah);
-    }
-  }, [surahData, surah_error, searchValue]);
-
+  if (searchValue) surah = search(surah, ["name", "translation", "revelation"], searchValue);
   return (
     <main className={raleway.className}>
       <Head>
