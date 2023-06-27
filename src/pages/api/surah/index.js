@@ -13,10 +13,10 @@ export default async function handler(req, res) {
       delete updatedSurah.audio;
       updatedData.push(updatedSurah);
     });
-
     res.status(200).json({
       updatedData,
     });
+    console.info("Fetching All Data Complete");
   } catch (error) {
     console.log(error);
     res.status(500).json({ error: error.message });
