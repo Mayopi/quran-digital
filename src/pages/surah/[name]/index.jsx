@@ -64,7 +64,7 @@ const Surah = () => {
               <p className="py-6 text-opacity-50">
                 {isLoading || list_loading ? "Loading" : surah?.arti} - {isLoading || list_loading ? "Loading" : surah?.jumlahAyat} Ayat
               </p>
-              <p className="py-6 text-justify">{isLoading || list_loading ? "Loading" : surah?.deskripsi}.</p>
+              <p className="py-6 text-justify">{isLoading || list_loading ? "Loading" : <span dangerouslySetInnerHTML={{ __html: surah?.deskripsi }} />}.</p>
 
               <audio src={surah ? surah.audioFull["05"] : null} className="w-full p-2" controls></audio>
             </div>
