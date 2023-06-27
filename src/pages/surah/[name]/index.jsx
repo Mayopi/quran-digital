@@ -19,7 +19,11 @@ const fetcher = (url) => fetch(url, { cache: "no-store", next: { revalidate: 0 }
 
 const Surah = () => {
   const [isPlaying, setIsPlaying] = useState(false);
+  const [fullAudioPlaying, setFullAudioPlaying] = useState(false);
   const [currentAudioId, setCurrentAudioId] = useState(null);
+  const [audioFullOnLoad, setAudioFullOnLoad] = useState(true);
+  const [isLoadingAudio, setIsLoadingAudio] = useState({});
+
   const router = useRouter();
   const { name } = router.query;
 
@@ -27,8 +31,16 @@ const Surah = () => {
 
   const { data: { data: surah } = {}, error: surah_error, isLoading } = useSWR(list ? `${process.env.NEXT_PUBLIC_QURAN_API}/surat/${list.current.number}` : null, fetcher);
 
+  if (!isPlaying && currentAudioId) {
+    const audioElement = document.getElementById(currentAudioId);
+    setCurrentAudioId(null);
+    audioElement.pause();
+  }
+
   const toggleAudio = (audioId) => {
     const audioElement = document.getElementById(audioId);
+    const fullAudioElement = document.getElementById("full audio");
+    fullAudioElement.pause();
 
     if (isPlaying && currentAudioId === audioId) {
       setIsPlaying(false);
@@ -42,6 +54,7 @@ const Surah = () => {
       }
 
       setIsPlaying(true);
+      setFullAudioPlaying(false);
       setCurrentAudioId(audioId);
       audioElement.play();
     }
@@ -66,7 +79,23 @@ const Surah = () => {
               </p>
               <p className="py-6 text-justify">{isLoading || list_loading ? "Loading" : <span dangerouslySetInnerHTML={{ __html: surah?.deskripsi }} />}.</p>
 
-              <audio src={surah ? surah.audioFull["05"] : null} className="w-full p-2" controls></audio>
+              <audio
+                src={surah ? surah.audioFull["05"] : null}
+                className="w-full p-2"
+                id="full audio"
+                onLoadedData={() => setAudioFullOnLoad(false)}
+                on
+                controls
+                onPlay={() => (isPlaying ? setIsPlaying(false) : setFullAudioPlaying(true))}
+                onCanPlayThrough={() => setAudioFullOnLoad(false)}
+              ></audio>
+
+              {audioFullOnLoad && (
+                <div className="flex gap-2 justify-center items-center">
+                  <span className="loading loading-spinner loading-sm text-error"></span>
+                  <p className="text-error">Audio belum selesai di unduh mohon tunggu sebentar.</p>
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -101,7 +130,15 @@ const Surah = () => {
                       setIsPlaying(false);
                     }
                   }}
+                  onLoadedData={() => setIsLoadingAudio((prevState) => ({ ...prevState, [item.nomorAyat]: false }))}
+                  onCanPlayThrough={() => setIsLoadingAudio((prevState) => ({ ...prevState, [item.nomorAyat]: false }))}
                 ></audio>
+                {isLoadingAudio[item.nomorAyat] && (
+                  <div className="flex gap-2">
+                    <span className="loading loading-spinner loading-sm text-error"></span>
+                    <p className="text-error">Audio belum selesai di unduh mohon tunggu sebentar.</p>
+                  </div>
+                )}
               </div>
               <p className="py-6">
                 {item.nomorAyat}. {item.teksIndonesia}
