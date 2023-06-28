@@ -6,6 +6,7 @@ Aplikasi Al-Quran adalah sebuah aplikasi yang memungkinkan pengguna untuk membac
 - Penampilan teks Al-Quran dengan tampilan Arab, transliterasi Latin, dan terjemahan bahasa Indonesia.
 - Pencarian surah surah Al Quran.
 - Mendengarkan bacaan audio Al-Quran.
+- Memberi penanda baca (bookmark) untuk melanjutkan bacaan.
 - Pilihan untuk mengatur tema tampilan Aplikasi.
 
 ## Demo
