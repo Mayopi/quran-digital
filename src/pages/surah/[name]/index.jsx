@@ -68,10 +68,15 @@ const Surah = () => {
     }
   };
 
-  const definiteBookMark = (ayat) => {
+  const toggleBookmark = (ayat) => {
     if (typeof window !== "undefined") {
-      setBookmark({ name: surah.namaLatin, ayat });
-      localStorage.setItem("bookmark", JSON.stringify({ name: surah.namaLatin, ayat }));
+      if (bookmark?.name == surah.namaLatin && bookmark?.ayat == ayat) {
+        setBookmark({});
+        localStorage.setItem("bookmark", null);
+      } else {
+        setBookmark({ name: surah.namaLatin, ayat });
+        localStorage.setItem("bookmark", JSON.stringify({ name: surah.namaLatin, ayat }));
+      }
     }
   };
 
@@ -128,7 +133,7 @@ const Surah = () => {
         ) : (
           surah?.ayat?.map((item) => (
             <div key={item.nomorAyat} id={item.nomorAyat}>
-              <Button className={`${bookmark?.name == surah.namaLatin && bookmark?.ayat == item.nomorAyat ? "btn-primary" : "btn-secondary"} text-lg font-semibold rounded-full`} onClick={() => definiteBookMark(item.nomorAyat)}>
+              <Button className={`${bookmark?.name == surah.namaLatin && bookmark?.ayat == item.nomorAyat ? "btn-primary" : "btn-secondary"} text-lg font-semibold rounded-full`} onClick={() => toggleBookmark(item.nomorAyat)}>
                 {bookmark?.name == surah.namaLatin && bookmark?.ayat == item.nomorAyat ? <BsFillBookmarkCheckFill /> : <BsBookmark />}
               </Button>
 

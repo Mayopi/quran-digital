@@ -1,6 +1,7 @@
 import { Ysabeau, Raleway } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import { BsFillMoonStarsFill, BsFastForwardFill } from "react-icons/bs";
+import { BiRefresh } from "react-icons/bi";
 import clsx from "clsx";
 import Head from "next/head";
 import useSWR from "swr";
