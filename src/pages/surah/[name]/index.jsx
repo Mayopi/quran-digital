@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import Head from "next/head";
 import Navbar from "@/components/Navbar";
 import { Raleway, Ysabeau, Noto_Naskh_Arabic } from "next/font/google";
 import { useRouter } from "next/router";
 import useSWR from "swr";
 import Button from "@/components/Button";
-import { BsFillPlayFill, BsPauseFill } from "react-icons/bs";
+import { BsFillPlayFill, BsPauseFill, BsBookmark, BsFillBookmarkCheckFill } from "react-icons/bs";
 import { MdNavigateNext, MdNavigateBefore } from "react-icons/md";
 import clsx from "clsx";
 import Footer from "@/components/Footer";
@@ -23,6 +24,13 @@ const Surah = () => {
   const [currentAudioId, setCurrentAudioId] = useState(null);
   const [audioFullOnLoad, setAudioFullOnLoad] = useState(true);
   const [isLoadingAudio, setIsLoadingAudio] = useState({});
+  const [bookmark, setBookmark] = useState({});
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setBookmark(JSON.parse(localStorage.getItem("bookmark")));
+    }
+  }, []);
 
   const router = useRouter();
   const { name } = router.query;
@@ -60,6 +68,13 @@ const Surah = () => {
     }
   };
 
+  const definiteBookMark = (ayat) => {
+    if (typeof window !== "undefined") {
+      setBookmark({ name: surah.namaLatin, ayat });
+      localStorage.setItem("bookmark", JSON.stringify({ name: surah.namaLatin, ayat }));
+    }
+  };
+
   return (
     <main className={raleway.className}>
       <Head>
@@ -84,7 +99,6 @@ const Surah = () => {
                 className="w-full p-2"
                 id="full audio"
                 onLoadedData={() => setAudioFullOnLoad(false)}
-                on
                 controls
                 onPlay={() => (isPlaying ? setIsPlaying(false) : setFullAudioPlaying(true))}
                 onCanPlayThrough={() => setAudioFullOnLoad(false)}
@@ -113,7 +127,11 @@ const Surah = () => {
           </div>
         ) : (
           surah?.ayat?.map((item) => (
-            <div key={item.nomorAyat}>
+            <div key={item.nomorAyat} id={item.nomorAyat}>
+              <Button className={`${bookmark?.name == surah.namaLatin && bookmark?.ayat == item.nomorAyat ? "btn-primary" : "btn-secondary"} text-lg font-semibold rounded-full`} onClick={() => definiteBookMark(item.nomorAyat)}>
+                {bookmark?.name == surah.namaLatin && bookmark?.ayat == item.nomorAyat ? <BsFillBookmarkCheckFill /> : <BsBookmark />}
+              </Button>
+
               <h1 className={`text-4xl text-right ${NotoNaskhArabic.className}`}>{item.teksArab}</h1>
               <p className={`${NotoNaskhArabic.className} text-right mt-2`}>{item.teksLatin}</p>
               <div className="audio flex justify-end mt-5">

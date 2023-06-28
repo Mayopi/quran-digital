@@ -1,6 +1,6 @@
 import { Ysabeau, Raleway } from "next/font/google";
 import Navbar from "@/components/Navbar";
-import { BsFillMoonStarsFill } from "react-icons/bs";
+import { BsFillMoonStarsFill, BsFastForwardFill } from "react-icons/bs";
 import clsx from "clsx";
 import Head from "next/head";
 import useSWR from "swr";
@@ -8,6 +8,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import search from "@/common/search";
 import Footer from "@/components/Footer";
+import Button from "@/components/Button";
 
 const ysabeau = Ysabeau({ subsets: ["cyrillic-ext"] });
 const raleway = Raleway({ subsets: ["latin"] });
@@ -42,6 +43,13 @@ export default function Home() {
   const [surah, setSurah] = useState([]);
   const [searchValue, setSearchValue] = useState(null);
   const [searchNotFound, setSearchNotFound] = useState(false);
+  const [bookmark, setBookmark] = useState(null);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setBookmark(JSON.parse(localStorage.getItem("bookmark")));
+    }
+  }, []);
 
   let { data: { data } = {}, error: surah_error, isLoading } = useSWR(`${process.env.NEXT_PUBLIC_QURAN_API}/surat`, fetcher);
 
@@ -64,7 +72,7 @@ export default function Home() {
       </Head>
       <Navbar />
 
-      <header className="flex flex-col gap-2 justify-center items-center mt-10">
+      <header className={`flex flex-col gap-2 justify-center items-center mt-10`}>
         <h1 className={`lg:text-4xl text-2xl ${ysabeau.className}`}>
           Welcome to Quran Digital <BsFillMoonStarsFill className={"inline text-primary"} />
         </h1>
@@ -78,6 +86,21 @@ export default function Home() {
             setSearchValue(target.value);
           }}
         />
+
+        <div className="hero my-5">
+          <div className="hero-content text-center">
+            <div className="max-w-md">
+              <h1 className={`text-3xl font-bold ${ysabeau.className}`}>Last Read</h1>
+              <h3 className={`text-lg py-3 ${ysabeau.className}`}>{bookmark ? `${bookmark.name} - ${bookmark.ayat}` : "No Bookmark Record."}</h3>
+              <Link href={bookmark ? `/surah/${bookmark.name}#${bookmark.ayat}` : "/"}>
+                <Button className="btn btn-primary text-lg">
+                  {bookmark ? "Warp to Last Read" : "You don't have any bookmarked record"} <BsFastForwardFill />
+                </Button>
+              </Link>
+              <p className="text-warning mt-2">Warning, bookmark only rely on a local storage. If you clearing cache bookmark data will be lost.</p>
+            </div>
+          </div>
+        </div>
       </header>
 
       <section className="mx-5 my-16 flex flex-wrap gap-5 lg:gap-3 items-center justify-center">
