@@ -15,7 +15,7 @@ const raleway = Raleway({ subsets: ["latin"] });
 const ysabeau = Ysabeau({ subsets: ["cyrillic-ext"] });
 const NotoNaskhArabic = Noto_Naskh_Arabic({ subsets: ["arabic"] });
 
-const fetcher = (url) => fetch(url, { cache: "no-store", next: { revalidate: 0 } }).then((r) => r.json());
+const fetcher = (url) => fetch(url).then((r) => r.json());
 
 const Surah = () => {
   const [isPlaying, setIsPlaying] = useState(false);
