@@ -133,7 +133,7 @@ const Surah = () => {
         ) : (
           surah?.ayat?.map((item) => (
             <div key={item.nomorAyat} id={item.nomorAyat}>
-              <Button className={`${bookmark?.name == surah.namaLatin && bookmark?.ayat == item.nomorAyat ? "btn-primary" : "btn-secondary"} text-lg font-semibold rounded-full`} onClick={() => toggleBookmark(item.nomorAyat)}>
+              <Button className={`${bookmark?.name == surah.namaLatin && bookmark?.ayat == item.nomorAyat ? "btn-primary" : "btn-secondary"} text-lg font-semibold rounded-full mb-5`} onClick={() => toggleBookmark(item.nomorAyat)}>
                 {bookmark?.name == surah.namaLatin && bookmark?.ayat == item.nomorAyat ? <BsFillBookmarkCheckFill /> : <BsBookmark />}
               </Button>
 
