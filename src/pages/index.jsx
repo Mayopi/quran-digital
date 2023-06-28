@@ -93,11 +93,13 @@ export default function Home() {
             <div className="max-w-md">
               <h1 className={`text-3xl font-bold ${ysabeau.className}`}>Last Read</h1>
               <h3 className={`text-lg py-3 ${ysabeau.className}`}>{bookmark ? `${bookmark.name} - ${bookmark.ayat}` : "No Bookmark Record."}</h3>
-              <Link href={bookmark ? `/surah/${bookmark.name}#${bookmark.ayat}` : "/"}>
-                <Button className="btn btn-primary text-lg">
-                  {bookmark ? "Warp to Last Read" : "You don't have any bookmarked record"} <BsFastForwardFill />
-                </Button>
-              </Link>
+              {bookmark && (
+                <Link href={`/surah/${bookmark.name}#${bookmark.ayat}`}>
+                  <Button className="btn btn-primary text-lg">
+                    {bookmark ? "Warp to Last Read" : "You don't have any bookmarked record"} <BsFastForwardFill />
+                  </Button>
+                </Link>
+              )}
               <p className="text-warning mt-2">Warning, bookmark only rely on a local storage. If you clearing cache bookmark data will be lost.</p>
             </div>
           </div>
