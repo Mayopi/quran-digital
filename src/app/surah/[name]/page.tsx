@@ -10,6 +10,16 @@ import { MdNavigateNext, MdNavigateBefore } from "react-icons/md";
 import { fetcher } from "@/lib/fetcher";
 import type { ApiDataResponse, Bookmark, SurahDetail, SurahListData } from "@/types/quran";
 import { Button } from "@/components/ui/button";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+
+const RECITER_LABELS: Record<string, string> = {
+  "01": "Abdullah Al-Juhany",
+  "02": "Abdul Muhsin Al-Qasim",
+  "03": "Abdurrahman as-Sudais",
+  "04": "Ibrahim Al-Dossari",
+  "05": "Misyari Rasyid Al-Afasi",
+  "06": "Yasser Al-Dosari",
+};
 
 export default function SurahPage() {
   const params = useParams<{ name: string }>();
@@ -18,6 +28,14 @@ export default function SurahPage() {
   const [currentAudioId, setCurrentAudioId] = useState<string | null>(null);
   const [audioFullOnLoad, setAudioFullOnLoad] = useState(true);
   const [isLoadingAudio, setIsLoadingAudio] = useState<Record<number, boolean>>({});
+  const [selectedReciter, setSelectedReciter] = useState<string>(() => {
+    if (typeof window === "undefined") {
+      return "05";
+    }
+
+    const reciter = localStorage.getItem("selected-reciter");
+    return reciter && RECITER_LABELS[reciter] ? reciter : "05";
+  });
   const [bookmark, setBookmark] = useState<Bookmark | null>(() => {
     if (typeof window === "undefined") {
       return null;
@@ -44,6 +62,7 @@ export default function SurahPage() {
   );
 
   const surah = surahResponse?.data;
+  const reciterOptions = surah ? Object.keys(surah.audioFull).sort() : Object.keys(RECITER_LABELS);
 
   const toggleAudio = (audioId: string, nomorAyat: number): void => {
     const audioElement = document.getElementById(audioId) as HTMLAudioElement | null;
@@ -89,6 +108,18 @@ export default function SurahPage() {
     localStorage.setItem("bookmark", JSON.stringify(nextBookmark));
   };
 
+  const handleReciterChange = (reciter: string): void => {
+    setSelectedReciter(reciter);
+    localStorage.setItem("selected-reciter", reciter);
+    setIsPlaying(false);
+    setCurrentAudioId(null);
+    setAudioFullOnLoad(true);
+    setIsLoadingAudio({});
+
+    const fullAudioElement = document.getElementById("full-audio") as HTMLAudioElement | null;
+    fullAudioElement?.pause();
+  };
+
   return (
     <main>
       <header className="mx-auto mt-10 max-w-4xl rounded-xl bg-muted p-8 text-center">
@@ -99,9 +130,26 @@ export default function SurahPage() {
           {isLoading || listLoading ? "Loading" : surah?.arti} - {isLoading || listLoading ? "Loading" : surah?.jumlahAyat} Ayat
         </p>
         <p className="pb-6 text-justify">{isLoading || listLoading ? "Loading" : <span dangerouslySetInnerHTML={{ __html: surah?.deskripsi ?? "" }} />}.</p>
+        <div className="mb-4 flex items-center justify-end gap-2">
+          <label htmlFor="reciter-selector" className="text-sm font-medium text-muted-foreground">
+            Reciter
+          </label>
+          <Select value={selectedReciter} onValueChange={handleReciterChange}>
+            <SelectTrigger id="reciter-selector" className="w-[260px]">
+              <SelectValue placeholder="Select reciter" />
+            </SelectTrigger>
+            <SelectContent>
+              {reciterOptions.map((reciterCode) => (
+                <SelectItem key={reciterCode} value={reciterCode}>
+                {RECITER_LABELS[reciterCode] ?? `Reciter ${reciterCode}`}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
 
         <audio
-          src={surah?.audioFull["05"]}
+          src={surah?.audioFull[selectedReciter]}
           className="w-full p-2"
           id="full-audio"
           onLoadedData={() => setAudioFullOnLoad(false)}
@@ -156,7 +204,7 @@ export default function SurahPage() {
                   </Button>
                   <audio
                     id={audioId}
-                    src={item.audio["05"]}
+                    src={item.audio[selectedReciter]}
                     onEnded={() => {
                       if (audioId === currentAudioId) {
                         setCurrentAudioId(null);
